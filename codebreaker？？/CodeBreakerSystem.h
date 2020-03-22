@@ -10,7 +10,7 @@
 
 class CodeBreakerSystem {
 public:
-	typedef std::vector<std::uint16_t> Box;
+	typedef std::vector<std::int16_t> Box;
 public:
 	struct ICodeBreakerAI {
 		virtual std::string Name(){ return "HogeAI"; }
@@ -181,9 +181,6 @@ protected:
 };
 class HumanPlayer : public CodeBreakerSystem::ICodeBreakerAI {
 public:
-	HumanPlayer() {
-
-	}
 	std::string Name() {
 		return N;
 	}
@@ -195,14 +192,14 @@ public:
 		std::getline(std::cin, N);
 
 		std::cout << "Answer Is " << L << " Digit." << std::endl;
-		std::cout << "Answer Is 0-" << R << "." << std::endl;
+		std::cout << "Answer Range:1-" << R << "." << std::endl;
 		return true;
 	}
 	bool Think() {
 		std::cout << "Type Answer. Numbers is separate by space." << std::endl;
 		A.clear();
 
-		std::size_t N = 0;
+		CodeBreakerSystem::Box::value_type N = 0;
 
 		while (std::cin >> N) {
 			A.push_back(N);
